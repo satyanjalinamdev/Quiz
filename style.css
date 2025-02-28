@@ -11,6 +11,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    animation: fadeIn 0.5s ease-in-out; 
   }
   
   .quiz-container {
@@ -19,6 +20,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
+    animation: slideUp 0.5s ease-out;
   }
   
   #question-container {
@@ -28,6 +30,9 @@
   #question {
     font-size: 1.5em;
     margin-bottom: 20px;
+    pacity: 0;
+    animation: fadeInUp 0.8s ease-in-out forwards; /* Fade in the question with upward motion */
+  
   }
   
   #options {
@@ -41,10 +46,13 @@
     margin: 5px 0;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-in-out forwards 0.5s; /* Delay the fade-in animation for options */
   }
   
   #options li:hover {
+    transform: scale(1.05);
     background-color: #e0e0e0;
   }
   
@@ -57,6 +65,8 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-in-out forwards 0.8s; 
   }
   
   button:hover {
@@ -71,10 +81,15 @@
   #score {
     text-align: center;
     margin-top: 20px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-in-out forwards 1s;
+
   }
   #play-again-container {
     text-align: center;
     margin-top: 20px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-in-out forwards 1.5s;
   }
   
   #play-again {
@@ -84,3 +99,34 @@
   #play-again:hover {
     background-color: #1976D2;
   }
+/* Keyframe animations */
+@keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideUp {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }

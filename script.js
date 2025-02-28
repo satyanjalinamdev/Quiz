@@ -49,6 +49,15 @@ options: ["<head>", "<h6>", "<heading>", "<h1>"],
       li.onclick = () => checkAnswer(index);
       optionsElement.appendChild(li);
     });
+    // Trigger reanimation for each new question and options
+  setTimeout(() => {
+    questionElement.style.animation = "fadeInUp 0.8s ease-in-out forwards";
+    const optionItems = optionsElement.querySelectorAll("li");
+    optionItems.forEach((option, index) => {
+      option.style.animation = `fadeInUp 0.5s ease-in-out forwards ${index * 0.1}s`;
+    });
+  }, 100); // Delay to ensure smooth animation on page load
+
   }
   
   function checkAnswer(selectedIndex) {
@@ -94,6 +103,7 @@ options: ["<head>", "<h6>", "<heading>", "<h1>"],
   function showPlayAgain() {
     nextButton.disabled = true;
     skipButton.disabled = true;
+    playAgainContainer.style.animation = "fadeInUp 0.8s ease-in-out forwards"; 
     playAgainContainer.style.display = "block"; // Show Play Again button
   }
   
